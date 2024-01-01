@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <h1>{{data.title}}</h1>
+    {{data.text}}
+    <form
+      ref="uploadForm"
+      id="uploadForm"
+      action="/upload"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <input type="file" name="photo" />
+      <button type="submit">kirim</button>
+    </form>
+    {{#img}}
+    <form action="/download" method="post">
+      <input type="hidden" name="photo" value="{{.}}" />
+      <button type="submit">
+        <img src="/upload/{{.}}" alt="" width="255" />
+      </button>
+    </form>
+    {{/img}}
+  </body>
+</html>
